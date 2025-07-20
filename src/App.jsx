@@ -10,11 +10,15 @@ function App() {
     const newDice = []
 
     for (let i = 0; i < 10; i++) {
-      const randNum = Math.ceil(Math.random() * 6)
+      const randNum = Math.ceil(Math.random() * 6)  // Between 1-6
       newDice.push(randNum)
     }
 
     return newDice
+  }
+
+  function rollDice() {
+    setDice(generateAllNewDice)
   }
 
   const diceElements = dice.map((num, index) => <Die key={index} val={num}/>)
@@ -24,6 +28,7 @@ function App() {
       <div className="dice-container">
         {diceElements}
       </div>
+      <button className="roll-btn" onClick={rollDice}>Roll</button>
     </main>
   )
 }
