@@ -73,7 +73,9 @@ button {
 
 button.roll-btn {
     height: 60px;
-    width: 120px;
+    white-space: nowrap;
+    width: auto;
+    padding: 6px 21px;
     border: none;
     border-radius: 6px;
     background-color: #5035FF;
