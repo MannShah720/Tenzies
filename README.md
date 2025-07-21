@@ -4,13 +4,13 @@
 
 Play the game here ---> https://tenzies300.netlify.app/
 
-# How to play
+## How to play
 1. Click the **Roll** button to generate random numbers on the dice 🎲
 2. Click on a specific die to "hold" or freeze it at its current value 📌
 3. Continue rolling until all dice show the same number #️⃣
 4. Try to achieve this in as few rolls and as little time as possible! 🥇
 
-# 🛠️ Built With
+## 🛠️ Built With
 - React
 - HTML, CSS, Javascript
 - Vite
