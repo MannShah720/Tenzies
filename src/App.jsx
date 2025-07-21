@@ -55,7 +55,7 @@ function App() {
 
   return (
     <main>
-      {gameWon && <Confetti/>}
+      {gameWon && <Confetti width={1535} height={725} gravity={0.15}/>}
       <div aria-live="polite" className="sr-only">
         {gameWon && <p>Congratulations! You won! Press "New Game" to start again.</p>}
       </div>
