@@ -4,7 +4,9 @@
 
 Play the game here ---> https://tenzies300.netlify.app/
 
-<img src="src/assets/Preview.png" alt="Preview-Img" width="200">
+<p align="center">
+    <img src="src/assets/Preview.png" alt="Preview-Img" width="240">
+</p>
 
 ## ❓How to Play
 1. Click **Roll** to generate random dice
