@@ -95,12 +95,20 @@ button.roll-btn {
     border: 0;
 }
 
-/* Smaller screens */
+/* For mobile devices */
 @media (max-width: 768px) {
-  .dice-container button {
-    width: 50px;
-    height: 50px;
-    font-size: 1.25rem; /* Smaller text */
-    border-radius: 8px;  /* Slightly smaller corners */
-  }
+    .instructions {
+        font-size: 15px;
+        margin: 0px 30px;
+    }
+
+    .dice-container {
+        gap: 10px;
+    }
+    .dice-container button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem; /* Smaller text */
+        border-radius: 8px;  /* Slightly smaller corners */
+    }
 }
