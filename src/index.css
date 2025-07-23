@@ -37,6 +37,20 @@ main {
     margin: 0;
 }
 
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: #e63946;
+  font-size: 1.3rem;
+  background-color: #1e1e1e;
+  padding: 6px 12px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
 .instructions {
     font-size: 20px;
     margin: 0px 100px;
@@ -93,6 +107,10 @@ button.roll-btn {
 
 /* For mobile devices */
 @media (max-width: 768px) {
+    .timer {
+        font-size: 1rem;
+    }
+    
     .instructions {
         font-size: 15px;
         margin: 0px 30px;
