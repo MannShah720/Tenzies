@@ -1,10 +1,12 @@
-import { useState , useEffect} from 'react'
+import { useState , useEffect, use} from 'react'
 import Die from "./components/Die"
 import './App.css'
 import { nanoid } from "nanoid"
 import Confetti from 'react-confetti'
 
 function App() {
+
+  const [rolling, setRolling] = useState(false) // Rolling animation
 
   const [dice, setDice] = useState(() => generateAllNewDice())  // Array of objects
 
@@ -54,16 +56,21 @@ function App() {
     }
 
     else {
+      setRolling(true)
+
       setDice(oldDice => {
         return oldDice.map(die => {
           return die.isHeld ? die : {...die, value: Math.ceil(Math.random() * 6)}
         })
       })
+
+      setTimeout(() => setRolling(false), 300)
     }
   }
 
   function hold(id) {
-    if (!isTimeActive) {
+    if (!gameWon) {
+      if (!isTimeActive) {
       setStartTime(Date.now())
       setIsTimeActive(true)
     }
@@ -73,6 +80,8 @@ function App() {
         return die.id === id ? {...die, isHeld:!die.isHeld} : die
       })
     })
+
+    }
   }
 
   const diceElements = dice.map((diceObject) => (
@@ -81,6 +90,7 @@ function App() {
     value={diceObject.value}
     isHeld={diceObject.isHeld}
     hold={() => hold(diceObject.id)}
+    rolling={rolling}
   />))
 
   // mm:ss:ms format
