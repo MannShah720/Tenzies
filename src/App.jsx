@@ -6,17 +6,37 @@ import Confetti from 'react-confetti'
 
 function App() {
 
+  // ------------------ States  ------------------
   const [rolls, setRolls] = useState(0)
 
   const [rolling, setRolling] = useState(false) // Rolling animation
 
   const [dice, setDice] = useState(() => generateAllNewDice())  // Array of objects
 
-  // ---------- Timer ----------
+  const [gameWon, setGameWon] = useState(false)
+
   const [startTime, setStartTime] = useState(null)
+
   const [isTimeActive, setIsTimeActive] = useState(false)
+
   const [elapsedTime, setElapsedTime] = useState(0)
 
+  // ------------------ Win Condition  ------------------
+  useEffect(() => {
+    const allHeld = dice.every(die => die.isHeld)
+    const allSameValue = dice.every(die => die.value === dice[0].value)
+
+    if (allHeld && allSameValue) {
+      setGameWon(true)
+      setIsTimeActive(false)
+    }
+  }, [dice])
+
+  useEffect(() => {
+    if (gameWon) {setIsTimeActive(false)}
+  }, [gameWon])
+
+  // ------------------ Timer ------------------
   useEffect(() => {
     let interval;
     if (isTimeActive) {
@@ -26,13 +46,6 @@ function App() {
     }
     return () => clearInterval(interval)
   }, [isTimeActive])
-
-  // Win Condition
-  const gameWon = dice.every(die => die.isHeld) && dice.every(die => die.value === dice[0].value)
-
-  useEffect(() => {
-    if (gameWon) {setIsTimeActive(false)}
-  }, [gameWon])
 
   function generateAllNewDice() {
     const newDice = []
@@ -55,6 +68,7 @@ function App() {
       setElapsedTime(0)
       setStartTime(null)
       setIsTimeActive(false)
+      setGameWon(false)
       setRolls(0)
     }
 
