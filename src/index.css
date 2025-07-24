@@ -51,6 +51,17 @@ main {
   width: fit-content;
 }
 
+.time-count-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.roll-count {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .instructions {
     font-size: 20px;
     margin: 0px 100px;
@@ -109,6 +120,10 @@ button.roll-btn {
 @media (max-width: 768px) {
     .timer {
         font-size: 1rem;
+    }
+
+    .roll-count {
+        font-size: 15px;
     }
     
     .instructions {

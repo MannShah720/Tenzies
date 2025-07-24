@@ -6,6 +6,8 @@ import Confetti from 'react-confetti'
 
 function App() {
 
+  const [rolls, setRolls] = useState(0)
+
   const [rolling, setRolling] = useState(false) // Rolling animation
 
   const [dice, setDice] = useState(() => generateAllNewDice())  // Array of objects
@@ -53,9 +55,11 @@ function App() {
       setElapsedTime(0)
       setStartTime(null)
       setIsTimeActive(false)
+      setRolls(0)
     }
 
     else {
+      setRolls(prevRolls => prevRolls + 1)
       setRolling(true)
 
       setDice(oldDice => {
@@ -110,23 +114,27 @@ function App() {
       </div>
       <h1 className="title">Tenzies</h1>
 
-      <div className="timer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#e63946"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ marginRight: "8px", verticalAlign: "middle" }}
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-      </svg>
-        {formattedTime}
+      <div className="time-count-container">
+        <div className="timer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#e63946"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ marginRight: "8px", verticalAlign: "middle" }}
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+          {formattedTime}
+        </div>
+
+        <p className="roll-count">Rolls: {rolls}</p>
       </div>
 
       <p className="instructions">Roll until all dice are the same. Click each die to freeze its value. Win as fast as possible!</p>
