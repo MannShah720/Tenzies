@@ -138,7 +138,7 @@ function App() {
   }
 
 
-  // ---------- Return ----------
+  // ------------------ Return ------------------
   return (
     <main>
       {gameWon && <Confetti width={1535} height={725} gravity={0.15}/>}

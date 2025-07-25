@@ -33,8 +33,26 @@ main {
 }
 
 .title {
-    font-size: 40px;
+    font-size: 3rem;
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd60a;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow:
+        2px 2px 0 #000,
+        4px 4px 0 #ff006e;
+    animation: flicker 1.2s infinite alternate;
+    text-shadow:
+        0 0 5px #ff006e,
+        0 0 10px #ff006e,
+        2px 2px 0 #000;
+}
+
+@keyframes flicker {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.85; transform: scale(1.01); }
+    100% { opacity: 1; }
 }
 
 .timer {
@@ -123,6 +141,7 @@ button.roll-btn {
     font-weight: bold;
     transition: background-color .2s ease-out;
 }
+
 
 .roll-btn.rolls {
   background-color: #5035FF;
