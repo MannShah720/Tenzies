@@ -6,7 +6,8 @@ Play the game here ---> https://tenzies300.netlify.app/
 
 ## Preview
 <p align="center">
-    <img src="src/assets/Preview.png" alt="Preview-Img" width="300">
+    <img src="src/assets/Preview.png" alt="Preview-Img" width="500">
+    <img src="src/assets/Mobile Preview.png" alt="Preview-Img" width="300">
 </p>
 
 ## ❓How to Play
