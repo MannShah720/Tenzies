@@ -55,19 +55,31 @@ main {
 .time-count-container {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
 .roll-count {
-  background-color: #0B2434;
-  color: #c77dff;
-  font-weight: bold;
-  font-family: 'Courier New', monospace;
-  font-size: 1.2rem;
-  padding: 7px 16px;
-  border: 2px solid #c77dff;
-  border-radius: 10px;
-  text-shadow: 0 0 2px #c77dff;
+    background-color: #0B2434;
+    color: #c77dff;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    padding: 7px 16px;
+    border: 2px solid #c77dff;
+    border-radius: 10px;
+    text-shadow: 0 0 2px #c77dff;
+}
+
+.highscore {
+    background-color: #0B2434;
+    color: #7dff86;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    padding: 7px 16px;
+    border: 2px solid #7dff86;
+    border-radius: 10px;
+    text-shadow: 0 0 2px #7dff86;
 }
 
 .instructions {

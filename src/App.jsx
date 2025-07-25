@@ -21,6 +21,8 @@ function App() {
 
   const [elapsedTime, setElapsedTime] = useState(0)
 
+  const [highScore, setHighScore] = useState(null);
+
   // ------------------ Win Condition  ------------------
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
@@ -29,6 +31,11 @@ function App() {
     if (allHeld && allSameValue) {
       setGameWon(true)
       setIsTimeActive(false)
+
+      if (!highScore || elapsedTime < highScore) {
+        localStorage.setItem("highScore", elapsedTime)
+        setHighScore(elapsedTime)
+      }
     }
   }, [dice])
 
@@ -38,7 +45,7 @@ function App() {
 
   // ------------------ Timer ------------------
   useEffect(() => {
-    let interval;
+    let interval
     if (isTimeActive) {
       interval = setInterval(() => {setElapsedTime(Date.now() - startTime)}, 50)
     } else {
@@ -46,6 +53,15 @@ function App() {
     }
     return () => clearInterval(interval)
   }, [isTimeActive])
+
+  // ------------------ Score ------------------
+  useEffect(() => {
+    const storedScore = localStorage.getItem("highScore");
+    if (storedScore) {
+      setHighScore(Number(storedScore));
+    }
+  }, [])
+
 
   function generateAllNewDice() {
     const newDice = []
@@ -114,11 +130,12 @@ function App() {
   />))
 
   // mm:ss:ms format
-  const totalMilliseconds = elapsedTime;
-  const minutes = Math.floor(totalMilliseconds / 60000);
-  const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
-  const milliseconds = Math.floor((totalMilliseconds % 1000) / 10);
-  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+  const formatTime = (ms) => {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const milliseconds = Math.floor((ms % 1000) / 10);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(2, '0')}`;
+  }
 
 
   // ---------- Return ----------
@@ -147,10 +164,12 @@ function App() {
             <circle cx="12" cy="12" r="10"></circle>
             <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-          {formattedTime}
+          {formatTime(elapsedTime)}
         </div>
 
         <p className="roll-count">Rolls: {rolls}</p>
+
+        <p className="highscore">Best: {formatTime(highScore)}</p>
       </div>
 
       <p className="instructions">Roll until all dice are the same. Click each die to freeze its value. Win as fast as possible!</p>
