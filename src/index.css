@@ -17,7 +17,7 @@ body {
 div#root {
     height: 100%;
     width: 100%;
-    max-height: 750px;
+    max-height: 800px;
     max-width: 750px;
 }
 
@@ -68,6 +68,11 @@ main {
   border-radius: 8px;
   width: fit-content;
   text-shadow: 0 0 2px #e63946;
+}
+
+.clock-icon {
+    width: 18px;
+    height: 18px;
 }
 
 .time-count-container {
@@ -157,6 +162,18 @@ button.roll-btn {
   background-color: #b82e39;
 }
 
+@keyframes roll-animation {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(15deg); }
+  50%  { transform: rotate(-15deg); }
+  75%  { transform: rotate(15deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.rolling {
+  animation: roll-animation 0.3s ease;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -171,12 +188,36 @@ button.roll-btn {
 
 /* For mobile devices */
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .time-count-container {
+        gap: 0.6rem;
+    }
+    
     .timer {
-        font-size: 1rem;
+        font-size: 0.7rem;
+        gap: 0rem;
+        padding: 6px 6px;
+    }
+
+    .clock-icon {
+        width: 13px;
+        height: 13px;
     }
 
     .roll-count {
-        font-size: 15px;
+        font-size: 0.7rem;
+        padding: 6px 7px;
+    }
+
+    .highscore {
+        font-size: 0.7rem;
+        padding: 6px 7px;
     }
     
     .instructions {
@@ -193,17 +234,4 @@ button.roll-btn {
         font-size: 1.25rem; /* Smaller text */
         border-radius: 8px;  /* Slightly smaller corners */
     }
-}
-
-
-@keyframes roll-animation {
-  0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(15deg); }
-  50%  { transform: rotate(-15deg); }
-  75%  { transform: rotate(15deg); }
-  100% { transform: rotate(0deg); }
-}
-
-.rolling {
-  animation: roll-animation 0.3s ease;
 }
