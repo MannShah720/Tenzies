@@ -61,16 +61,18 @@ function App() {
 
     return newDice
   }
+  
+  function reset() {
+    setDice(generateAllNewDice)
+    setElapsedTime(0)
+    setStartTime(null)
+    setIsTimeActive(false)
+    setGameWon(false)
+    setRolls(0)
+  }
 
   function rollDice() {
-    if (gameWon) {
-      setDice(generateAllNewDice)
-      setElapsedTime(0)
-      setStartTime(null)
-      setIsTimeActive(false)
-      setGameWon(false)
-      setRolls(0)
-    }
+    if (gameWon) {reset()}
 
     else {
       setRolls(prevRolls => prevRolls + 1)
@@ -155,7 +157,7 @@ function App() {
       <div className="dice-container">
         {diceElements}
       </div>
-      <button className="roll-btn" onClick={rollDice}>{gameWon ? "New Game" : "Roll"}</button>
+      <button className={`roll-btn ${gameWon ? "new-game" : "rolls"}`} onClick={rollDice}>{gameWon ? "New Game" : "Roll"}</button>
     </main>
   )
 }

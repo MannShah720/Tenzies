@@ -3,7 +3,7 @@ export default function Die(props) {
         backgroundColor: props.isHeld ? "#59E391" : "white"
     }
 
-    const className = `die-button ${!props.isHeld && props.rolling ? "roll" : ""}`
+    const className = `die-button ${!props.isHeld && props.rolling ? "rolling" : ""}`
     
     return (
     <button 
